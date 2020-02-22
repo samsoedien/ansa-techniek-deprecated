@@ -24,6 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "yarn lint:scripts && yarn lint:styles",
+    "lint:fix": "eslint ./src --ext js,jsx,ts,tsx --fix",
     "lint:scripts": "eslint ./src --ext js,jsx,ts,tsx",
     "lint:styles": "stylelint './packages/**/*.tsx'"
   },
@@ -71,7 +72,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "yarn --silent lint:scripts --fix"
+      "yarn --silent lint:fix"
     ],
     "*.tsx": [
       "yarn --silent lint:styles"
