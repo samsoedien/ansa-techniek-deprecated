@@ -1,10 +1,16 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 
-import Contact from './features/Contact';
+import Header from './templates/Header'
+import Contact from './features/Contact'
 
-function App() {
-  return <Contact />;
-}
+export interface IAppProps {}
 
-export default App;
+const App: React.FC<IAppProps> = () => (
+  <>
+    <Header />
+    <Contact />
+  </>
+)
+
+export default App
