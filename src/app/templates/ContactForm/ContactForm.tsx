@@ -1,33 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  Grid,
-  TextField,
-  Button,
-  FormGroup,
-  FormControlLabel,
-  Checkbox
-} from '@material-ui/core';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Grid, TextField, Button, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core'
 
-import styles from './ContactForm.module.scss';
+import styles from './ContactForm.module.scss'
 
 interface IContactFormProps {
-  firstName: string;
-  lastName: string;
-  address: string;
-  postalCode: string;
-  city: string;
-  email: string;
-  phone: string;
-  subject: string;
-  message: string;
-  offerte: boolean;
-  preferredDate: boolean;
-  date: Date;
-  onChangeCallback: (e: any) => any;
-  onSubmitCallback: (e: any) => any;
-  // onHandleCheckboxCallback: (e: any) => any
-  errors?: Object;
+  firstName: string
+  lastName: string
+  address: string
+  postalCode: string
+  city: string
+  email: string
+  phone: string
+  subject: string
+  message: string
+  offerte: boolean
+  preferredDate: boolean
+  date: Date
+  onChangeCallback: (e: any) => any
+  onSubmitCallback: (e: any) => any
+  onHandleCheckboxCallback: (name: string, e: any) => any
+  errors?: Object
 }
 
 const ContactForm: React.FC<IContactFormProps> = ({
@@ -45,27 +38,22 @@ const ContactForm: React.FC<IContactFormProps> = ({
   date,
   onChangeCallback,
   onSubmitCallback,
-  // onHandleCheckboxCallback,
-  errors
+  onHandleCheckboxCallback,
+  errors,
 }) => {
-  const onChange = (e: any) => onChangeCallback(e);
+  const onChange = (e: any) => onChangeCallback(e)
 
-  const onSubmit = (e: any) => onSubmitCallback(e);
+  const onSubmit = (e: any) => onSubmitCallback(e)
 
-  const onHandleCheckbox = (name: any) => (e: any) => {
-    // onHandleCheckboxCallback(name, e)
-    console.log(name, e);
-  };
+  const onHandleCheckbox = (name: string) => (e: any) => {
+    onHandleCheckboxCallback(name, e)
+    console.log(name, e)
+  }
 
   return (
     <Grid container justify="center">
       <Grid item xs={11} sm={9} md={7} lg={5}>
-        <form
-          onSubmit={onSubmit}
-          className={styles.contactForm}
-          noValidate
-          autoComplete="off"
-        >
+        <form onSubmit={onSubmit} className={styles.contactForm} noValidate autoComplete="off">
           <Grid container justify="space-between">
             <Grid item xs={5}>
               <TextField
@@ -165,22 +153,12 @@ const ContactForm: React.FC<IContactFormProps> = ({
           />
           <FormGroup row>
             <FormControlLabel
-              control={
-                <Checkbox
-                  checked={offerte}
-                  onChange={onHandleCheckbox('offerte')}
-                  color="primary"
-                />
-              }
+              control={<Checkbox checked={offerte} onChange={onHandleCheckbox('offerte')} color="primary" />}
               label="Offerte gewenst"
             />
             <FormControlLabel
               control={
-                <Checkbox
-                  checked={preferredDate}
-                  onChange={onHandleCheckbox('preferredDate')}
-                  color="primary"
-                />
+                <Checkbox checked={preferredDate} onChange={onHandleCheckbox('preferredDate')} color="primary" />
               }
               label="Voorkeur datum uitvoering gewenst"
             />
@@ -194,24 +172,19 @@ const ContactForm: React.FC<IContactFormProps> = ({
             value={date}
             onChange={onChange}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             disabled={!preferredDate && true}
           />
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            value="Submit"
-            className={styles.contactFormButton}
-          >
+          <br />
+          <Button variant="contained" color="primary" type="submit" value="Submit" className={styles.contactFormButton}>
             Verzenden
           </Button>
         </form>
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
 ContactForm.propTypes = {
   firstName: PropTypes.string.isRequired,
@@ -228,8 +201,8 @@ ContactForm.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   onChangeCallback: PropTypes.func.isRequired,
   onSubmitCallback: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired // eslint-disable-line
+  errors: PropTypes.object.isRequired, // eslint-disable-line
   // onHandleCheckboxCallback: PropTypes.func.isRequired,
-};
+}
 
-export default ContactForm;
+export default ContactForm

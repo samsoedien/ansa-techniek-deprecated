@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import ContactForm from '../../templates/ContactForm'
 
@@ -54,7 +54,7 @@ const ContactFormContainer: React.FC<IContactFormContainerProps> = () => {
     console.log(contactData)
   }
 
-  // const onHandleCheckboxCallback = (name: any, e: any) => setFormData({ [name]: e.target.checked })
+  const onHandleCheckboxCallback = (name: any, e: any) => setFormData({ ...formData, [name]: e.target.checked })
 
   return (
     <ContactForm
@@ -73,7 +73,7 @@ const ContactFormContainer: React.FC<IContactFormContainerProps> = () => {
       errors={errors}
       onChangeCallback={onChangeCallback}
       onSubmitCallback={onSubmitCallback}
-      // onHandleCheckboxCallback={onHandleCheckboxCallback}
+      onHandleCheckboxCallback={onHandleCheckboxCallback}
     />
   )
 }
