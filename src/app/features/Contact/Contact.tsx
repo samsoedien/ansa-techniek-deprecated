@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 // import PropTypes from 'prop-types'
 
 import ContactForm from '../../templates/ContactForm'
+import ContactSection from '../../templates/ContactSection'
+import ContactFooter from '../../templates/ContactFooter'
 
 interface IContactFormContainerProps {}
 
@@ -24,7 +26,7 @@ const ContactFormContainer: React.FC<IContactFormContainerProps> = () => {
     preferredDate: false,
     offerte: false,
     selectedFile: null,
-    errors: {},
+    // errors: {},
   })
 
   const {
@@ -40,7 +42,7 @@ const ContactFormContainer: React.FC<IContactFormContainerProps> = () => {
     date,
     preferredDate,
     offerte,
-    errors,
+    // errors,
   } = formData
 
   const onChangeCallback = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -57,24 +59,28 @@ const ContactFormContainer: React.FC<IContactFormContainerProps> = () => {
   const onHandleCheckboxCallback = (name: any, e: any) => setFormData({ ...formData, [name]: e.target.checked })
 
   return (
-    <ContactForm
-      firstName={firstName}
-      lastName={lastName}
-      address={address}
-      postalCode={postalCode}
-      city={city}
-      email={email}
-      phone={phone}
-      subject={subject}
-      message={message}
-      date={date}
-      preferredDate={preferredDate}
-      offerte={offerte}
-      errors={errors}
-      onChangeCallback={onChangeCallback}
-      onSubmitCallback={onSubmitCallback}
-      onHandleCheckboxCallback={onHandleCheckboxCallback}
-    />
+    <>
+      <ContactSection />
+      <ContactForm
+        firstName={firstName}
+        lastName={lastName}
+        address={address}
+        postalCode={postalCode}
+        city={city}
+        email={email}
+        phone={phone}
+        subject={subject}
+        message={message}
+        date={date}
+        preferredDate={preferredDate}
+        offerte={offerte}
+        // errors={errors}
+        onChangeCallback={onChangeCallback}
+        onSubmitCallback={onSubmitCallback}
+        onHandleCheckboxCallback={onHandleCheckboxCallback}
+      />
+      <ContactFooter />
+    </>
   )
 }
 

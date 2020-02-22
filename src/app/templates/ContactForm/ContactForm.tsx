@@ -20,7 +20,7 @@ interface IContactFormProps {
   onChangeCallback: (e: any) => any
   onSubmitCallback: (e: any) => any
   onHandleCheckboxCallback: (name: string, e: any) => any
-  errors?: Object
+  // errors?: Object
 }
 
 const ContactForm: React.FC<IContactFormProps> = ({
@@ -39,7 +39,7 @@ const ContactForm: React.FC<IContactFormProps> = ({
   onChangeCallback,
   onSubmitCallback,
   onHandleCheckboxCallback,
-  errors,
+  // errors,
 }) => {
   const onChange = (e: any) => onChangeCallback(e)
 
@@ -201,8 +201,8 @@ ContactForm.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   onChangeCallback: PropTypes.func.isRequired,
   onSubmitCallback: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired, // eslint-disable-line
-  // onHandleCheckboxCallback: PropTypes.func.isRequired,
+  // errors: PropTypes.object.isRequired, // eslint-disable-line
+  onHandleCheckboxCallback: PropTypes.func.isRequired,
 }
 
 export default ContactForm
